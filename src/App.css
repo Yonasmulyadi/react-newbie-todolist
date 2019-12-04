@@ -53,6 +53,7 @@ body {
 
 .content-collection {
     margin-top: 4rem;
+    list-style-type: none;
 }
 
 .content-container {

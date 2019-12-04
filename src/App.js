@@ -8,16 +8,21 @@ class App extends Component
 {
     state = {
         userValue : "",
-        currentValue : []
+        items : [],
+        key: 1
     }
 
-    addCurrentValue = (e) => {
+    addItems = (e) => {
         e.preventDefault();
-        let changeValue = this.state.userValue;
+        const item = {
+            key: this.state.key,
+            value: this.state.userValue
+        }
         this.setState(
             {
                 userValue: "",
-                currentValue: [...this.state.currentValue, changeValue]
+                items: [...this.state.items, item],
+                key: this.state.key + 1
             }
         )
     }
@@ -32,11 +37,11 @@ class App extends Component
     {
         return(
             <div>
-                <Header title="Todo List App" method={this.setUserValue} pushMethod={this.addCurrentValue} value={this.state.userValue}/>
-                <div className="content-collection">
-                    {this.state.currentValue.map(element => 
-                    <Content content={element}/>)}
-                </div>
+                <Header title="Todo List App" method={this.setUserValue} pushMethod={this.addItems} value={this.state.userValue}/>
+                <ul className="content-collection">
+                    {this.state.items.map((element) => 
+                    <li key={element.key}><Content content={element.value}/></li>)}
+                </ul>
             </div>
         )
     }
