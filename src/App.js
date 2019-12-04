@@ -27,6 +27,15 @@ class App extends Component
         )
     }
 
+    removeItems = (id) => {
+        const finalItems = [...this.state.items].filter((element) => {
+            return element.key !== id;
+        })
+        this.setState({
+            items: finalItems
+        })
+    }
+
     setUserValue = (e) => {
         this.setState({
             userValue: e.target.value
@@ -40,7 +49,7 @@ class App extends Component
                 <Header title="Todo List App" method={this.setUserValue} pushMethod={this.addItems} value={this.state.userValue}/>
                 <ul className="content-collection">
                     {this.state.items.map((element) => 
-                    <li key={element.key}><Content content={element.value}/></li>)}
+                        <li key={element.key}><Content content={element.value} removeMethod={this.removeItems.bind(this,element.key)}/></li>)}
                 </ul>
             </div>
         )

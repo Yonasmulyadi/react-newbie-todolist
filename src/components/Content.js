@@ -6,7 +6,7 @@ const Content = (props) => {
             <p> {props.content} </p>
             <div className="content-controller">
                 <Button class="update-button" name="update"/>
-                <Button class="delete-button" name="delete"/>
+                <Button class="delete-button" name="delete" method={props.removeMethod}/>
             </div>
         </div>
     )
