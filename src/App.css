@@ -96,6 +96,9 @@ body {
 
 /* transition */
 
+button:focus {
+    outline: 0;
+}
 .content-controller .delete-button:hover{
     background: red;
     color: #fff;
